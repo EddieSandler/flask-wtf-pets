@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="row">
-
+<form class="form-control">
   <ul>
     {% for pet in pets %}
     <li>{{ pet.name }}</li>
@@ -20,7 +20,10 @@
 
   </ul>
 
-
+</form>
 
   {% endfor %}
+  <p><a class="btn btn-sm btn-secondary" href="/add">
+    <button>Add Pet</button>
+  </a></p>
   {% endblock %}
