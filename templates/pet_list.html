@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+
+  <ul>
+    {% for pet in pets %}
+    <li>{{ pet.name }}</li>
+    {% if pet.photo_url %}
+  <div class="col-sm-2 col-6">
+    <img src="{{ pet.photo_url }}" alt="Image Unavailable" class="img-fluid">
+
+  </div>
+  {% endif %},
+
+    {% if pet.available==True %}
+    <li><b>Available</b></li>
+    {% endif %}
+
+  </ul>
+
+
+
+  {% endfor %}
+  {% endblock %}
