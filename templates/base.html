@@ -7,17 +7,35 @@
   crossorigin="anonymous">
   <title>Pet adoption</title>
 </head>
-<body>
 {% block content %}
+<body>
+  {{ form.hidden_tag() }}
+
+{% for field in form if field.widget.input_type != 'hidden'%}
+
+<div class='form-group'>
+  {{ field.label }}
+  {{ field(class="form-control") }}
+
+  <span>
+      {% if field.errors %}
+        {% for error in field.errors %}
+	        <b class="text-danger">{{ error }}</b>
+        {% endfor %}
+      {% endif %}
+    </span>
+
+</div>
+
+{% endfor %}
+
 {% for msg in get_flashed_messages() %}
   <div>{{ msg }}</div>
 {% endfor %}
 
 
-{% endblock %}
-{% for msg in get_flashed_messages() %}
-  <div>{{ msg }}</div>
-{% endfor %}
 
 </body>
+
+{% endblock %}
 </html>

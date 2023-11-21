@@ -6,17 +6,18 @@
 <form class="form-control">
   <ul>
     {% for pet in pets %}
-    <li><a href="/{{ pet.id }}">{{ pet.name }}</a></li>
+    <a href="{{ url_for('edit_pet',pet_id=pet.id) }}">{{ pet.name }}</a>
 
     {% if pet.photo_url %}
   <div class="col-sm-2 col-6">
-    <img src="{{ pet.photo_url }}" alt="Image Unavailable" class="img-fluid">
+    <img class="img-thumbnail"src="{{ pet.photo_url }}" alt="Image Unavailable" class="img-fluid">
 
   </div>
   {% endif %},
 
     {% if pet.available==True %}
-    <li><b>Available</b></li>
+      <li>is <b>Available</b></li>
+   
     {% endif %}
 
   </ul>
@@ -24,7 +25,7 @@
 </form>
 
   {% endfor %}
-  <p><a class="btn btn-sm btn-secondary" href="/add">
+  <p><a class="btn btn-sm btn-secondary" href="{{ url_for('add_pet') }}" method="GET">
     <button>Add Pet</button>
   </a></p>
   {% endblock %}
