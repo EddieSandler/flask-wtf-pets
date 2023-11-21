@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %} View a Pet Form {% endblock %}
+{% block content %}
+
+<div>
+<ul>
+  <li>Name:{{ pet.name }}</li>
+  <li>Species:{{ pet.species}}</li>
+  <li>Age: {{pet.age}}</li>
+  <li><img src="{{pet.photo_url }}" alt="Image Unavailable"></li>
+</ul>
+</div>
+
+
+
+<div>
+<form class="form-control" method="POST">
+<h2>Edit Pet</h2>
+{% for field in form
+  if field.widget.input_type != 'hidden' %}
+<p>
+{{ field.label }}
+{{ field }}
+{% endfor %}
+
+  <button type="submit">Edit</button>
+</form>
+</div>
+
+{% for msg in get_flashed_messages() %}
+  <div>{{ msg }}</div>
+  {% endfor %}
+
+
+{% endblock %}
+
+
+

@@ -6,7 +6,8 @@
 <form class="form-control">
   <ul>
     {% for pet in pets %}
-    <li>{{ pet.name }}</li>
+    <li><a href="/{{ pet.id }}">{{ pet.name }}</a></li>
+
     {% if pet.photo_url %}
   <div class="col-sm-2 col-6">
     <img src="{{ pet.photo_url }}" alt="Image Unavailable" class="img-fluid">
